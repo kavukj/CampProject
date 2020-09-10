@@ -15,7 +15,7 @@ var express 		= require("express"),
 var app				= express();
 //mon.connect("mongodb://localhost/Campground");
 
-mon.connect("mongodb+srv://campground:campground@campground.wkcs8.mongodb.net/<dbname>?retryWrites=true&w=majority", {
+mon.connect("mongodb+srv://campground:campground@campground.wkcs8.mongodb.net/campground?retryWrites=true&w=majority", {
 	useNewUrlParser : true,
 	useCreateIndex : true
 	
