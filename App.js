@@ -13,7 +13,17 @@ var express 		= require("express"),
 	CommentModel    = require("./Models/Comment");
 
 var app				= express();
-mon.connect("mongodb://localhost/Campground");
+//mon.connect("mongodb://localhost/Campground");
+
+mon.connect("mongodb+srv://campground:campground@campground.wkcs8.mongodb.net/<dbname>?retryWrites=true&w=majority", {
+	useNewUrlParser : true,
+	useCreateIndex : true
+	
+}).then(() => {
+	console.log("Connected to db");
+}).catch(err => {
+	console.log(err);
+})
 
 app.set("view engine","ejs");
 app.use(express.static("Styles"));
