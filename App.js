@@ -15,15 +15,15 @@ var express 		= require("express"),
 var app				= express();
 //mon.connect("mongodb://localhost/Campground");
 
-mon.connect("mongodb+srv://campground:campground@campground.wkcs8.mongodb.net/campground?retryWrites=true&w=majority", {
+mon.connect("mongodb+srv://campground:campground@yelpcampcluster.yvuc5.mongodb.net/camps?retryWrites=true&w=majority", {
 	useNewUrlParser : true,
-	useCreateIndex : true
+	useCreateIndex : true,
+	useUnifiedTopology: true
 	
-}).then(() => {
+});
+mon.connection.on('connected',() => {
 	console.log("Connected to db");
-}).catch(err => {
-	console.log(err);
-})
+});
 
 /*const MongoClient = require('mongodb').MongoClient;
 const uri = "mongodb+srv://campground:campground@campground.wkcs8.mongodb.net/campdatabase?retryWrites=true&w=majority";
