@@ -15,7 +15,7 @@ var express 		= require("express"),
 var app				= express();
 //mon.connect("mongodb://localhost/Campground");
 
-mon.connect("mongodb+srv://campground:campground@campground.wkcs8.mongodb.net/campground?retryWrites=true&w=majority", {
+/*mon.connect("mongodb+srv://campground:campground@campground.wkcs8.mongodb.net/campground?retryWrites=true&w=majority", {
 	useNewUrlParser : true,
 	useCreateIndex : true
 	
@@ -23,7 +23,17 @@ mon.connect("mongodb+srv://campground:campground@campground.wkcs8.mongodb.net/ca
 	console.log("Connected to db");
 }).catch(err => {
 	console.log(err);
-})
+})*/
+
+const MongoClient = require('mongodb').MongoClient;
+const uri = "mongodb+srv://campground:campground@campground.wkcs8.mongodb.net/campdatabase?retryWrites=true&w=majority";
+const client = new MongoClient(uri, { useNewUrlParser: true });
+client.connect(err => {
+  const collection = client.db("test").collection("devices");
+  // perform actions on the collection object
+  client.close();
+});
+
 
 app.set("view engine","ejs");
 app.use(express.static("Styles"));
