@@ -280,10 +280,10 @@ function isOwner(req,res,next){
 	}
 }
 
-var port=process.env.PORT || 3000;
+/*var port=process.env.PORT || 3000;
 app.listen(port,function(){
 	console.log(("Server started"));
-});
-/*app.listen(process.env.PORT,process.env.IP,function(req,res){
+});*/
+app.listen(process.env.PORT,process.env.IP,function(req,res){
 	console.log("server started");
 });
