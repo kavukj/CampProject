@@ -13,17 +13,10 @@ var express 		= require("express"),
 	CommentModel    = require("./Models/Comment");
 
 var app				= express();
+
 //mon.connect("mongodb://localhost/Campground");
 
-mon.connect("mongodb+srv://campground:campground@campground.wkcs8.mongodb.net/campground?retryWrites=true&w=majority", {
-	useNewUrlParser : true,
-	useCreateIndex : true
-	
-}).then(() => {
-	console.log("Connected to db");
-}).catch(err => {
-	console.log(err);
-})
+mon.connect(process.env.DATABASEURL);
 
 app.set("view engine","ejs");
 app.use(express.static("Styles"));
@@ -280,6 +273,11 @@ function isOwner(req,res,next){
 	}
 }
 
+/*var port=process.env.PORT || 3000;
+app.listen(port,function(){
+	console.log(("Server started"));
+});
+*/
 app.listen(process.env.PORT,process.env.IP,function(req,res){
 	console.log("server started");
 });
