@@ -1,0 +1,16 @@
+<%- include("header") %>
+<H1>
+	Sign Up
+</H1>
+<div>
+	<form action="/register" method="POST">
+		<input type="text" name="username" placeholder="Username">
+		<input type="text" name="password" placeholder="password">
+		<button>
+			Sign Up
+		</button>
+	</form>
+</div>
+<p><a href="/login">Login</a></p>
+<p><a href="/logout">Logout</a></p>
+<%- include("footer") %>

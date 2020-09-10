@@ -1,0 +1,52 @@
+<%- include("header") %>
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <p class="lead">YelpCamp</p>
+            <div class="list-group">
+                <li class="list-group-item active">Info 1</li>
+                <li class="list-group-item">Info 2</li>
+                <li class="list-group-item">Info 3</li>
+            </div>
+        </div>
+        <div class="col-md-9">
+            <div class="thumbnail">
+                <img class="img-responsive" src="<%= campground.img %>">
+                <div class="caption-full">
+                    <h4 class="pull-right"><%=campground.price%> Rs./Night</h4>
+                    <h4><a><%=campground.name%></a></h4>
+                    <p><%= campground.desc %></p>
+					<p class="text-muted"><i>Created By: <%= campground.author.username %></i></p>
+					<%if(CurrentUser && campground.author.id.equals(CurrentUser._id)){ %>
+					<!-- we are checking current user exists because if user is not logged in then equal condition becomes a error-->
+						<a class="btn btn-sm btn-warning edit" href="/campgrounds/<%= campground._id %>/edit">Edit</a>
+						<form style="display:inline" action="/campgrounds/<%=campground._id%>?_method=DELETE" method="post">
+							<button class="btn btn-sm btn-danger">Delete</button>
+						</form>
+					<% } %>
+					
+                </div>
+            </div>
+            <div class="well">
+                <div class="text-right">
+                    <a class="btn btn-success" href="/campgrounds/<%= campground._id %>/comments/new">Add New Comment</a>
+                </div>
+                <hr>
+                <% campground.comments.forEach(function(comment){ %>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <strong><%= comment.author.username %></strong>
+                            <span class="pull-right">10 days ago</span>
+                            <p>
+                                <%= comment.text %> 
+                            </p>
+                        </div>
+                    </div>
+                <% }) %>
+            </div>
+        </div>
+    </div>
+</div>
+
+<Hr>	
+<footer class="container text-center"><%- include("footer") %></footer>

@@ -1,0 +1,44 @@
+<html>
+	<head>
+		<title>Welcome to yelpCamp</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js" type="text/javascript" async></script>
+	</head>
+	<body>
+		<nav class="navbar navbar-default">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="/"><span class="glyphicon glyphicon-fire" aria-hidden="true"></span>  YelpCamp</a>
+				</div>
+				<div class="collapse navbar-collapse" id="navLinks">
+					<ul class="nav navbar-right navbar-nav">
+						<!-- if not logged in-->
+						<% if(!CurrentUser){ %>
+							<li class="nav-item"><a href="/login">Login</a></li>
+							<li class="nav-item"><a href="/register">SignUp</a></li>
+						<!-- if logged in then show this-->
+						<% }else{ %>
+							<li class="nav-item"><a href="#">Welcome <%= CurrentUser.username %></a></li>
+							<li class="nav-item"><a href="/logout">Logout</a></li>
+						<% } %>
+					</ul>
+				</div>
+			</div>
+		</nav>
+		<div class="container"> 
+			<!-- first we check whether the varibale exists or not -->
+			<!-- If we have defined the variable in app.use then it will always be true no matter which condition ran and which not.
+				So we need to also check whether it has anything inside it or not using length to show only thoe variable whihc have any value inside it. 
+				Else all varibales declared in app will be shown-->
+			<% if(error && error.length >0){ %>
+				<div class="alert alert-danger" role="alert">
+					<%=error %>
+				</div>
+			<% } %>
+			<% if(success && success.length >0){ %>
+				<div class="alert alert-success" role="alert">
+					<%=success %>
+				</div>
+			<% } %>
+		</div>
+		

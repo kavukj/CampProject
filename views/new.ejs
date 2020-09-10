@@ -1,0 +1,33 @@
+<%- include("header") %>
+
+<div class="container">
+	<Header class="jumbotron text-center">
+		<H1>Create a new Campground</H1>
+	</Header>	
+	<div class="container border border-success pt-3" style="width:30%; align:center;">
+		<form action="/campgrounds" method="Post">
+			<div class="form-group">
+				<input class="form-control" type="text" placeholder="Enter Name" name="name">
+			</div>
+			<div class="form-group">
+				<input class="form-control" type="text" placeholder="Enter Image URL" name="img">
+			</div>
+			<div class="form-group">
+				<input class="form-control" type="text" placeholder="Enter image description" name="desc">
+			</div>
+			<div class="form-group">
+				<input class="form-control" type="number" placeholder="Enter the price per night" name="price" min=500" step="100">
+			</div>
+			<div class="form-group text-center">
+				<button class=" form-control btn btn-success">Submit</button>
+			</div>		
+		</form>
+		<!-- A link to Campground page if user doesn't want to add new Camp-->
+	</div>
+	<p>
+		<a class="btn btn-primary btn-md" href="/campgrounds">Go back to CampGrounds</a>
+	</p>
+</div>
+
+<Hr>	
+<footer class="container text-center"><%- include("footer") %></footer>

@@ -1,0 +1,17 @@
+<%- include("header") %>
+<H1>
+	Login to Campground Page
+</H1>
+<div>
+	<!-- Here also we will give a post request to login, where we will check the authenticity of credentils -->
+	<form action="/login" method="POST">
+		<input type="text" name="username" placeholder="Username">
+		<input type="text" name="password" placeholder="password">
+		<button>
+			Login
+		</button>
+	</form>
+</div>
+<p><a href="/register">Sing UP</a></p>
+<p><a href="/logout">Logout</a></p>
+<%- include("footer") %>
