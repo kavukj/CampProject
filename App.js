@@ -15,7 +15,7 @@ var express 		= require("express"),
 var app				= express();
 //mon.connect("mongodb://localhost/Campground");
 
-mon.connect(DATABASEURL, {
+mon.connect("mongodb+srv://campground:campground@yelpcampcluster.yvuc5.mongodb.net/camps?retryWrites=true&w=majority", {
 	useNewUrlParser : true,
 	useCreateIndex : true,
 	useUnifiedTopology: true
